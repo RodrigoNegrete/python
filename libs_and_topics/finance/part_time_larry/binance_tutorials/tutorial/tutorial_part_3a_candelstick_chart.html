@@ -1,0 +1,74 @@
+<!-- chart sources
+https://www.tradingview.com/
+https://github.com/tradingview/lightweight-charts
+https://www.tradingview.com/lightweight-charts/
+click on </> on chart example to get code -->
+
+<html>
+    <head>
+        <title>Coinview</title>
+        <!-- get candle chart script from  CDN 
+        source https://github.com/tradingview/lightweight-charts-->
+        <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+    </head>
+    
+    <!-- log output to console -->
+     <body>
+        <script>
+            // Connect to the websocket and store to variable
+            var binanceSocket = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@trade");
+            // console.log(binanceSocket)
+
+            // create log on console
+            binanceSocket.onmessage = function (event) {
+                console.log(event.data);
+            }
+        </script> 
+
+
+        <!-- log output to webpage -->
+        <h2>Trades</h2>
+
+        <div id="chart"></div>
+
+        <div id="trades"></div>
+
+        <h3>Settings</h3>
+        <div id="settings">
+            <input type="checkbox" /> 
+            RSI
+            <input type="text" id="rsi_length" name="rsi_lenght" placeholder="14" />
+            Overbought
+            <input type="text" id="rsi_overbought" name="rsi_overbought" placeholder="70" />
+            Oversold
+            <input type="text" id="rsi_oversold" name="rsi_oversold" placeholder="30" />
+        </div>
+
+        <script>
+            // Connect to the websocket and store to variable
+            // var binanceSocket = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@trade");
+            
+            // create variable for the div
+            var tradeDiv = document.getElementById('trades')
+
+            /*
+            // create log on page
+            binanceSocket.onmessage = function (event) {
+                console.log(event.data);
+
+                // create message object
+                var messageObject = JSON.parse(event.data)
+                
+                // access the value for p key which is the price
+                // messageObject.p
+                // append price to div
+                tradeDiv.append(messageObject.p)
+
+            }
+            /*
+        </script>
+        <!-- <script src="E:/OneDrive/Documents/GitHub/notes/python/libs_and_topics/finance/part_time_larry/binance_tutorials/tutorial_part_3b_candelstick_chart.js"></script> -->
+        <script src="tutorial_part_3b_candelstick_chart.js"></script>
+    </body>
+
+</html>
