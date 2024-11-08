@@ -1,8 +1,0 @@
-# pip install -r requirements.txt
-python-binance
-TA-Lib
-numpy
-backtrader
-flask
-matplotlib
-websocket_client
